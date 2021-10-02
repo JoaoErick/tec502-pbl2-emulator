@@ -1,5 +1,5 @@
 
-package tec502.pbl2.emulator;
+package main;
 
 /**
  *
