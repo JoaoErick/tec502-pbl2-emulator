@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Classe do paciente.
  *
- * @author Allan Capistrano
+ * @author Allan Capistrano e João Erick Barbosa
  */
 public class PatientDevice implements Serializable {
 
@@ -54,7 +54,7 @@ public class PatientDevice implements Serializable {
         this.isSeriousCondition = this.checkPatientCondition();
         this.patientSeverityLevel = this.calculatePatientSeverityLevel();
 
-        this.isSeriousConditionLabel = this.checkPatientCondition() ? "Sim" : "Não";
+        this.isSeriousConditionLabel = this.checkPatientCondition() ? "Grave" : "Normal";
     }
 
     public String getName() {
@@ -132,10 +132,10 @@ public class PatientDevice implements Serializable {
      * @return boolean
      */
     public boolean checkPatientCondition() {
-        return (this.bodyTemperature > (float) 38.6)
+        return (this.bodyTemperature > (float) 38.4)
                 || (this.respiratoryFrequency >= 21)
-                || (this.bloodOxygenation < (float) 96)
-                || (this.bloodPressure <= 100)
+                || (this.bloodOxygenation < (float) 95.8)
+                || (this.bloodPressure <= 98)
                 || (this.heartRate >= 111);
     }
 
