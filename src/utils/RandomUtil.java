@@ -7,7 +7,7 @@ import java.util.Random;
  *
  * @author Allan Capistrano
  */
-public class RandomNumbers {
+public class RandomUtil {
 
     /**
      * Gera um número de ponto flutuante aleatório com base nos limites
@@ -34,5 +34,13 @@ public class RandomNumbers {
         Random randomInt = new Random();
 
         return randomInt.ints(start, end).findFirst().getAsInt();
+    }
+    
+    /**
+     * Gera um booleano de forma aleatória.
+     * @return boolean
+     */
+    public static boolean generateBoolean() {
+        return new Random().nextBoolean();
     }
 }
