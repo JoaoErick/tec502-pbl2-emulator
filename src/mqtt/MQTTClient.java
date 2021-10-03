@@ -52,7 +52,7 @@ public class MQTTClient implements MqttCallbackExtended {
      */
     public void connect() {
         try {
-            System.out.println("Conectando no broker MQTT em " + serverURI);
+            System.out.print("Conectando no broker MQTT em " + serverURI + "...");
             client = new MqttClient(serverURI, String.format("cliente_java_%d", System.currentTimeMillis()), new MqttDefaultFilePersistence(System.getProperty("java.io.tmpdir")));
             client.setCallback(this);
             client.connect(mqttOptions);
@@ -178,7 +178,7 @@ public class MQTTClient implements MqttCallbackExtended {
      */
     @Override
     public void connectComplete(boolean reconnect, String serverURI) {
-        System.out.println("Cliente MQTT " + (reconnect ? "reconectado" : "conectado") + " com o broker " + serverURI);
+        System.out.println(reconnect ? "reconectado" : "conectado");
     }
 
     /**
