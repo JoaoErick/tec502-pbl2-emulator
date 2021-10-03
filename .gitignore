@@ -82,3 +82,8 @@ nb-configuration.xml
 ## OS X
 ##############################
 .DS_Store
+
+!org.eclipse.paho.client.mqttv3-1.2.5.jar
+!commons-lang3-3.11.jar
+!javafaker-1.0.2.jar
+!snakeyaml-1.23.jar
