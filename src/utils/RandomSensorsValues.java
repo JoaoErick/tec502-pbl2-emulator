@@ -12,7 +12,7 @@ public class RandomSensorsValues {
     /* ------------------------- Constantes ----------------------------------*/
     private static final float NORMAL_BODY_TEMPERATURE_START = (float) 35.8;
     private static final int NORMAL_RESPIRATORY_FREQUENCY_START = 8;
-    private static final float NORMAL_BLOOD_OXYGENATION_START = (float) 95.9;
+    private static final float NORMAL_BLOOD_OXYGENATION_START = (float) 95.99;
     private static final int NORMAL_BLOOD_PRESSURE_START = 99;
     private static final int NORMAL_HEART_RATE_START = 49;
 
@@ -30,7 +30,7 @@ public class RandomSensorsValues {
 
     private static final float CRITICAL_BODY_TEMPERATURE_END = (float) 41.1;
     private static final int CRITICAL_RESPIRATORY_FREQUENCY_END = 31;
-    private static final float CRITICAL_BLOOD_OXYGENATION_END = (float) 95.8;
+    private static final float CRITICAL_BLOOD_OXYGENATION_END = (float) 95.98;
     private static final int CRITICAL_BLOOD_PRESSURE_END = 98;
     private static final int CRITICAL_HEART_RATE_END = 131;
     /* -----------------------------------------------------------------------*/
@@ -59,8 +59,8 @@ public class RandomSensorsValues {
     public ArrayList<Float> generate() {
         this.changeTendency = RandomUtil.generateFloat(0, (float) 1.1);
 
-        if ((this.seriousCondition && this.changeTendency < 0.9)
-                || (!this.seriousCondition && this.changeTendency >= 0.9)) {
+        if ((this.seriousCondition && this.changeTendency < 0.99)
+                || (!this.seriousCondition && this.changeTendency >= 0.99)) {
             this.sensors.add(RandomUtil.generateFloat(
                     CRITICAL_BODY_TEMPERATURE_START, CRITICAL_BODY_TEMPERATURE_END)
             );
@@ -76,8 +76,8 @@ public class RandomSensorsValues {
             this.sensors.add(
                     (float) RandomUtil.generateInt(CRITICAL_HEART_RATE_START, CRITICAL_HEART_RATE_END)
             );
-        } else if ((!this.seriousCondition && this.changeTendency < 0.9)
-                || (this.seriousCondition && this.changeTendency >= 0.9)) {
+        } else if ((!this.seriousCondition && this.changeTendency < 0.99)
+                || (this.seriousCondition && this.changeTendency >= 0.99)) {
             this.sensors.add(
                     RandomUtil.generateFloat(NORMAL_BODY_TEMPERATURE_START, NORMAL_BODY_TEMPERATURE_END)
             );
