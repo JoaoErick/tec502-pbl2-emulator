@@ -49,7 +49,12 @@ public class Emulator {
         String deviceId = new IdGenerate(12, ":").generate("XX.XX");
         String userName = new Faker().name().fullName();
         boolean tendency = RandomUtil.generateBoolean();
-        System.out.println(tendency);
+        
+        System.out.println("\n----------------------");
+        System.out.println("Tendência: " + (tendency ? "Grave" : "Normal"));
+        System.out.println("----------------------");
+        
+        
         while(true){
             Thread.sleep(1000);
             
