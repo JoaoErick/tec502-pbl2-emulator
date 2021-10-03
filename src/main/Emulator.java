@@ -3,7 +3,6 @@ package main;
 
 import com.github.javafaker.Faker;
 import java.util.List;
-import models.PatientDevice;
 import mqtt.MQTTClient;
 import mqtt.PatientDeviceListener;
 import org.json.JSONObject;
@@ -29,7 +28,6 @@ public class Emulator {
     
     public static void main(String[] args) throws InterruptedException {
         
-        
         /**
          * Realiza a conexão com o servidor MQTT.
          */
@@ -51,7 +49,7 @@ public class Emulator {
         String deviceId = new IdGenerate(12, ":").generate("XX.XX");
         String userName = new Faker().name().fullName();
         boolean tendency = RandomUtil.generateBoolean();
-        
+        System.out.println(tendency);
         while(true){
             Thread.sleep(1000);
             
@@ -59,27 +57,15 @@ public class Emulator {
                 RandomSensorsValues sensors = new RandomSensorsValues(tendency);
                 List<Float> data = sensors.generate();
                 
-                PatientDevice device = new PatientDevice(
-                        userName, 
-                        data.get(0), 
-                        Math.round(data.get(1)), 
-                        data.get(2),
-                        Math.round(data.get(3)),
-                        Math.round(data.get(4)),
-                        deviceId
-                );
-                
                 JSONObject json = new JSONObject();
                 
-                json.put("id", device.getDeviceId());
-                json.put("userName", device.getName());
-                json.put("respiratoryFrequency", device.getRespiratoryFrequency());
-                json.put("temperature", device.getBodyTemperature());
-                json.put("bloodOxygen", device.getBloodOxygenation());
-                json.put("heartRate", device.getHeartRate());
-                json.put("bloodPressure", device.getBloodPressure());
-                json.put("situation", device.getIsSeriousConditionLabel());
-                json.put("score", device.getPatientSeverityLevel());
+                json.put("id", deviceId);
+                json.put("userName", userName);
+                json.put("temperature", data.get(0));
+                json.put("respiratoryFrequency", Math.round(data.get(1)));
+                json.put("bloodOxygen", data.get(2));
+                json.put("bloodPressure", Math.round(data.get(3)));
+                json.put("heartRate", Math.round(data.get(4)));
                 
                 /**
                  * Publicando os dados do dispositivo para o tópico específico.
