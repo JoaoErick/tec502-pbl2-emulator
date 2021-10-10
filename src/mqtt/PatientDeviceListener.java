@@ -42,9 +42,9 @@ public class PatientDeviceListener implements IMqttMessageListener {
          * Caso tenha recebido a mensagem certa, responde com o tópico que o 
          * dispositivo deverá publicar.
          */
-        if (topic.equals("tec502/pbl2/patientDevice")) {
+        if (topic.contains("tec502/pbl2/patientDevice")) {
             
-            this.clientMQTT.unsubscribe("tec502/pbl2/patientDevice");
+            this.clientMQTT.unsubscribe(topic);
             
             JSONObject json = new JSONObject(new String(msg.getPayload()));
             
