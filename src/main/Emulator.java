@@ -17,7 +17,7 @@ import utils.RandomSensorsValues;
 public class Emulator {
 
     /* ------------------------- Constantes ----------------------------------*/
-    private static final String MQTT_ADDRESS = "tcp://broker.mqttdashboard.com:1883";
+    private static final String MQTT_ADDRESS = "tcp://26.174.47.54:1893";
     private static final String DEFAULT_PUBLISH_TOPIC = "tec502/pbl2/fog/";
     private static final String DEFAULT_SUBSCRIBE_TOPIC = "tec502/pbl2/patientDevice/";
     private static final int QOS = 0;
