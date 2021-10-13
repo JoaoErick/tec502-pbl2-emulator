@@ -8,7 +8,16 @@
 
 ## 📚 Descrição ##
 **Resolução do problema 2 do MI - Concorrência e Conectividade (TEC 502).**<br/><br/>
-O projeto trata-se de uma *Fog*, que é responsável por lidar diretamente com os emuladores de sensores. Essa comunicação é realizada através do protoclo *MQTT*, em que, cada *thread* da *Fog* lida com uma quantidade fixa de emuladores, sempre criando, de forma dinâmica, novas *threads* caso uma outra já esteja "cheia". Além disso, esta *Fog* se comunica diretamente com o servidor principal através de *sockets*, e quando solicitada, envia para o mesmo, uma lista contendo os dados se todos os emuladores que estão conectadas com ela.
+O projeto tem como função emular um dispositivo de monitoramento de COVID-19, que se comunica com uma [*Fog*](https://github.com/AllanCapistrano/tec502-pbl2-fog) através do procolo *MQTT*. Ele envia de tempos em tempos os valores dos sensores, que são gerados de forma **aleatória** com base na **têndencia** (normal ou grave; também gerado de forma aleatória) do paciente fictício, para a [*Fog*](https://github.com/AllanCapistrano/tec502-pbl2-fog).<br/><br/>
+**Esse dispositivo possui diversos sensores, tais como:**
+
+- Sensor de temperatura corporal;
+- Sensor de frequência respiratória;
+- Sensor de nível de oxigenação do sangue;
+- Sensor de pressão arterial;
+- Sensor de frequência cardíaca.
+
+Antes de começar a enviar os valores dos sensores, o mesmo realiza um processo de *handshake* com a [*Fog*](https://github.com/AllanCapistrano/tec502-pbl2-fog) para saber em qual tópico *MQTT* o mesmo irá publicar. Isso é feito para garantir que o emulador envie os dados para a *thread* certa da [*Fog*](https://github.com/AllanCapistrano/tec502-pbl2-fog) certa.
 
 ### ⛵ Navegação pelos projetos: ###
 - [Servidor](https://github.com/AllanCapistrano/tec502-pbl2-server)
