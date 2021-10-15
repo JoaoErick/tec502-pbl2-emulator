@@ -53,8 +53,6 @@ public class PatientDeviceListener implements IMqttMessageListener {
             System.out.println("");
             System.out.println(json);
             System.out.println("");
-        } else {
-            // TODO
         }
     }
     
