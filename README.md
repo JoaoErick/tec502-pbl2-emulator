@@ -50,6 +50,48 @@ Para o utilizar este projeto é necessário ter instalado o JDK 8u111.
 
 ###### Obs¹: A dependência JSON, não está em src > libs, pois a mesma não está disponível em `.jar`, porém, já está adicionada no pacote [org.json](https://github.com/JoaoErick/tec502-pbl2-emulator/tree/main/src/org/json), não sendo necessário fazer o *download* e/ou adicioná-la no projeto. ######
 
+### Através do terminal ###
+1. Se desejar executar o projeto utilizando o terminal, será necessário fazer o *build* do projeto, para isso, recomenda-se a utilização do [Apache Ant](https://ant.apache.org/);
+2. Por exemplo, em uma distribuição **Linux** baseada em **Ubuntu**, com o terminal aberto digite:
+```powershell
+$ sudo apt install ant
+```
+3. Após instalar o [Apache Ant](https://ant.apache.org/), clone este projeto:
+```powershell
+$ git clone git@github.com:JoaoErick/tec502-pbl2-emulator.git
+```
+4. Com o terminal aberto no diretório do projeto, entre na *branch* que possui o script para realizar a *build*:
+```powershell
+$ git checkout linux-compile
+```
+5. Nessa *branch*, basta executar o [Apache Ant](https://ant.apache.org/) com o seguinte comando:
+```powershell
+$ ant
+```
+
+### Através do [Docker](https://www.docker.com/) ###
+1. Caso ainda não tenha instalado, é necessário instalar o [Docker](https://www.docker.com/get-started);
+2. Após instalar o [Docker](https://www.docker.com/get-started), clone este projeto:
+```powershell
+$ git clone git@github.com:JoaoErick/tec502-pbl2-emulator.git
+```
+3. Com o terminal aberto no diretório do projeto, entre na *branch* que possui o arquivo `dockerfile`;
+```powershell
+$ git checkout docker
+```
+3. Faça o *build* da imagem:
+```powershell
+$ docker build -t tec502_pbl2_emulator .
+```
+4. Verifique o **id** da imagem criada:
+```powershell
+$ docker images
+```
+5. Inicie o container que irá rodar o projeto:
+```powershell
+$ docker run <id do container>
+```
+
 ------------
 
 ## 📌 Autores ##
