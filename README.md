@@ -70,7 +70,7 @@ $ ant
 ```
 
 ### Através do [Docker](https://www.docker.com/) ###
-1. Caso ainda não tenha instalado, é necessário instalar o [docker](https://www.docker.com/get-started);
+1. Caso ainda não tenha instalado, é necessário instalar o [Docker](https://www.docker.com/get-started);
 2. Após instalar o [Docker](https://www.docker.com/get-started), clone este projeto:
 ```powershell
 $ git clone git@github.com:JoaoErick/tec502-pbl2-emulator.git
