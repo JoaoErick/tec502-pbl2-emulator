@@ -1,31 +1,17 @@
-FROM frekele/java:jdk8
+FROM alpine
 
-MAINTAINER frekele <leandro.freitas@softdevelop.com.br>
+# Entrando no diretório raiz
+WORKDIR /root
 
-ENV ANT_VERSION=1.10.3
-ENV ANT_HOME=/opt/ant
+# Instalando o OpenJDK
+RUN apk add openjdk8
 
-# change to tmp folder
-WORKDIR /tmp
+# Instalando o Apache Ant
+RUN apk add apache-ant
 
-# Add project folder and build file
+# Adicionando a pasta do projeto e o arquivo de build no container
 ADD src /root/src
 COPY build.xml /root
 
-# Download and extract apache ant to opt folder
-RUN wget --no-check-certificate --no-cookies http://archive.apache.org/dist/ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz \
-    && wget --no-check-certificate --no-cookies http://archive.apache.org/dist/ant/binaries/apache-ant-${ANT_VERSION}-bin.tar.gz.sha512 \
-    && echo "$(cat apache-ant-${ANT_VERSION}-bin.tar.gz.sha512) apache-ant-${ANT_VERSION}-bin.tar.gz" | sha512sum -c \
-    && tar -zvxf apache-ant-${ANT_VERSION}-bin.tar.gz -C /opt/ \
-    && ln -s /opt/apache-ant-${ANT_VERSION} /opt/ant \
-    && rm -f apache-ant-${ANT_VERSION}-bin.tar.gz \
-    && rm -f apache-ant-${ANT_VERSION}-bin.tar.gz.sha512
-
-# add executables to path
-RUN update-alternatives --install "/usr/bin/ant" "ant" "/opt/ant/bin/ant" 1 && \
-    update-alternatives --set "ant" "/opt/ant/bin/ant" 
-
-# change to root folder
-WORKDIR /root
-
+# Definindo a partir de qual ponto o container irá executar
 ENTRYPOINT ant
