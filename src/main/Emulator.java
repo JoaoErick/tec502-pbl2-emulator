@@ -23,8 +23,7 @@ public class Emulator {
     private static final int QOS = 0;
     /* -----------------------------------------------------------------------*/
 
-    private static final String regions[]
-            = {"Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul"};
+    private static final String regions[] = {"Norte", "Sul"};
 
     public static String topic;
 
