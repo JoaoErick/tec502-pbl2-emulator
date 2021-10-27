@@ -1,7 +1,9 @@
 package main;
 
 import com.github.javafaker.Faker;
+import java.util.Arrays;
 import java.util.List;
+import models.FogMQTT;
 import mqtt.MQTTClient;
 import mqtt.PatientDeviceListener;
 import org.json.JSONObject;
@@ -17,36 +19,45 @@ import utils.RandomSensorsValues;
 public class Emulator {
 
     /* ------------------------- Constantes ----------------------------------*/
-    private static final String MQTT_ADDRESS = "tcp://broker.mqttdashboard.com:1883";
     private static final String DEFAULT_PUBLISH_TOPIC = "tec502/pbl2/fog/";
     private static final String DEFAULT_SUBSCRIBE_TOPIC = "tec502/pbl2/patientDevice/";
     private static final int QOS = 0;
     /* -----------------------------------------------------------------------*/
 
-    private static final String regions[] = {"Norte", "Sul"};
+    private final static List<FogMQTT> fogMqtt = Arrays.asList(
+            new FogMQTT("tcp://broker.mqttdashboard.com:1883", "Norte"),
+            new FogMQTT("tcp://broker.mqttdashboard.com:1883", "Sul")
+    );
 
     public static String topic;
 
     public static void main(String[] args) throws InterruptedException {
+        int index = RandomUtil.generateInt(0, fogMqtt.size());
+        
         /**
          * Realiza a conexão com o servidor MQTT.
          */
-        MQTTClient client = new MQTTClient(MQTT_ADDRESS, null, null);
+        MQTTClient client = new MQTTClient(
+                fogMqtt.get(index).getMqttAddress(), 
+                null, 
+                null
+        );
         client.connect();
-
-        int index = RandomUtil.generateInt(0, regions.length);
 
         /**
          * Publica uma mensagem vazia em tópico genérico com o objetivo de
          * receber o tópico adequado para o envio dos dados.
          */
-        client.publish(DEFAULT_PUBLISH_TOPIC + regions[index], "".getBytes(), QOS);
+        client.publish(
+                DEFAULT_PUBLISH_TOPIC + fogMqtt.get(index).getRegion(), 
+                "".getBytes(), QOS
+        );
 
         /**
          * Responsável por receber o nome do tópico em que os dados serão
          * enviados e realizar a assinatura neste.
          */
-        new PatientDeviceListener(client, DEFAULT_SUBSCRIBE_TOPIC + regions[index], QOS);
+        new PatientDeviceListener(client, DEFAULT_SUBSCRIBE_TOPIC + fogMqtt.get(index).getRegion(), QOS);
 
         String deviceId = new IdGenerate(12, ":").generate("XX.XX");
         String userName = new Faker().name().fullName();
