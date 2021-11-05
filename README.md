@@ -57,8 +57,13 @@ Para o utilizar este projeto é necessário ter instalado o JDK 8u111.
 $ sudo apt install ant
 ```
 3. Após instalar o [Apache Ant](https://ant.apache.org/), clone este projeto:
+- SSH:
 ```powershell
 $ git clone git@github.com:JoaoErick/tec502-pbl2-emulator.git
+```
+- HTTPS:
+```powershell
+$ git clone https://github.com/JoaoErick/tec502-pbl2-emulator.git
 ```
 4. Com o terminal aberto no diretório do projeto, entre na *branch* que possui o script para realizar a *build*:
 ```powershell
@@ -72,8 +77,13 @@ $ ant
 ### Através do [Docker](https://www.docker.com/) ###
 1. Caso ainda não tenha instalado, é necessário instalar o [Docker](https://www.docker.com/get-started);
 2. Após instalar o [Docker](https://www.docker.com/get-started), clone este projeto:
+- SSH:
 ```powershell
 $ git clone git@github.com:JoaoErick/tec502-pbl2-emulator.git
+```
+- HTTPS:
+```powershell
+$ git clone https://github.com/JoaoErick/tec502-pbl2-emulator.git
 ```
 3. Com o terminal aberto no diretório do projeto, entre na *branch* que possui o arquivo `dockerfile`;
 ```powershell
