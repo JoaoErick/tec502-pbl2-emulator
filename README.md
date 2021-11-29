@@ -7,7 +7,7 @@
 ------------
 
 ## 📚 Descrição ##
-**Resolução do problema 2 do MI - Concorrência e Conectividade (TEC 502).**<br/><br/>
+**Resolução do problema 2 do MI - Concorrência e Conectividade (TEC 502) - [Universidade Estadual de Feira de Santana (UEFS)](https://www.uefs.br/).**<br/><br/>
 O projeto tem como função emular um dispositivo de monitoramento de COVID-19, que se comunica com uma [*Fog*](https://github.com/AllanCapistrano/tec502-pbl2-fog) através do procolo *MQTT*. Ele envia de tempos em tempos os valores dos sensores, que são gerados de forma **aleatória** com base na **têndencia** (normal ou grave; também gerado de forma aleatória) do paciente fictício, para a [*Fog*](https://github.com/AllanCapistrano/tec502-pbl2-fog).<br/><br/>
 **Esse dispositivo possui diversos sensores, tais como:**
 
